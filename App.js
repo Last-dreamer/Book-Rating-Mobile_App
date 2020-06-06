@@ -1,19 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import BookList  from './components/book-list';
+import Detail from './components/detail';
+import Edit from './components/edit';
+import Auth from './components/auth';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from  'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const AppNavigateor = createStackNavigator({
+  Auth: {screen: Auth},
+  BookList: {screen: BookList},
+  Detail: {screen: Detail},
+  Edit: {screen: Edit}
 });
+
+const App = createAppContainer(AppNavigateor);
+export default App;
